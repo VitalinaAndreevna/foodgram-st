@@ -164,7 +164,7 @@ class FollowSerializer(UserSerializer):
     recipes_count = serializers.IntegerField(source='recipes.count', read_only=True)
 
     class Meta(UserSerializer.Meta):
-        fields = UserSerializer.Meta.fields + ['recipes', 'recipes_count']
+        fields = UserSerializer.Meta.fields + ('recipes', 'recipes_count')
 
     def get_recipes(self, obj):
         """Получает список рецептов с возможностью ограничения количества."""

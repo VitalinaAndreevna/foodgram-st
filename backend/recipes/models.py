@@ -1,4 +1,3 @@
-from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils import timezone
@@ -11,9 +10,6 @@ from foodgram.constants import (
     MIN_COOKING_TIME_VALUE
 )
 from recipes.abstractions import UserRecipe
-
-User = get_user_model()
-
 
 class Ingredient(models.Model):
     """Модель ингредиента с уникальным названием и единицей измерения."""
@@ -79,7 +75,7 @@ class RecipeIngredient(models.Model):
 class Recipe(models.Model):
     """Модель рецепта с ингредиентами, временем приготовления и изображением."""
     author = models.ForeignKey(
-        User,
+        'users.User',
         verbose_name='Автор',
         on_delete=models.CASCADE,
         related_name='authored_recipes'
@@ -105,12 +101,12 @@ class Recipe(models.Model):
         auto_now_add=True,  # Более точное название для автоматического заполнения
         db_index=True
     )
-    tags = models.ManyToManyField(  # Добавлено поле тегов, если используется
-        'Tag',
-        related_name='recipes',
-        blank=True,
-        verbose_name='Теги'
-    )
+    # tags = models.ManyToManyField(  # Добавлено поле тегов, если используется
+    #     'Tag',
+    #     related_name='recipes',
+    #     blank=True,
+    #     verbose_name='Теги'
+    # )
 
     class Meta:
         verbose_name = 'Рецепт'

@@ -19,7 +19,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
 from api.abstractions.views import manage_user_recipe
-from api.fields import Base62Field
+from api.fields import Base64ImageField
 from api.filters import RecipeFilter
 from api.paginations import Pagination
 from api.permissions import IsAuthorOrReadOnly
@@ -250,14 +250,14 @@ class RecipeViewSet(viewsets.ModelViewSet, FileGenerationMixin):
     def get_link(self, request, pk=None):
         """Генерация короткой ссылки на рецепт."""
         recipe = self.get_object()
-        short_code = Base62Field.to_base62(recipe.id)
+        short_code = Base64ImageField.to_base62(recipe.id)
         short_link = request.build_absolute_uri(f"/s/{short_code}")
         return Response({"short-link": short_link}, status=status.HTTP_200_OK)
 
     def redirect_to_recipe(self, request, short_code=None):
         """Редирект по короткой ссылке."""
         try:
-            recipe_id = Base62Field.from_base62(short_code)
+            recipe_id = Base64ImageField.from_base62(short_code)
         except ValueError:
             return Response(
                 {"detail": "Неверный короткий код."},

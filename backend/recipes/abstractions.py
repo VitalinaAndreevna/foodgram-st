@@ -1,14 +1,11 @@
-from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils import timezone
-
-User = get_user_model()
 
 
 class UserRecipe(models.Model):
     """Абстрактная модель для связи пользователей и рецептов."""
     user = models.ForeignKey(
-        User,
+        'users.User',
         verbose_name='Пользователь',
         on_delete=models.CASCADE,
         related_name='%(class)s_recipes'  # Динамическое имя связи
