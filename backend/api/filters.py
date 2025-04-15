@@ -1,36 +1,24 @@
-from django_filters import rest_framework as filters
-from django_filters.filters import BooleanFilter
+
+import django_filters
 
 from recipes.models import Recipe
+from django_filters.rest_framework import BooleanFilter
 
 
-class RecipeFilter(filters.FilterSet):
-    """
-    Фильтр для рецептов с поддержкой:
-    - Избранного
-    - Корзины покупок
-    - Фильтрации по автору
-    """
-    is_favorited = BooleanFilter(
-        method='filter_by_user_relation',
-        field_name='favorites'
-    )
-    is_in_shopping_cart = BooleanFilter(
-        method='filter_by_user_relation',
-        field_name='shopping_carts'
-    )
+class RecipeFilter(django_filters.FilterSet):
+    is_favorited = BooleanFilter(method='filter_is_favorited')
+    is_in_shopping_cart = BooleanFilter(method='filter_is_in_shopping_cart')
 
     class Meta:
         model = Recipe
-        fields = ['author']
+        fields = ['is_favorited', 'is_in_shopping_cart', 'author']
 
-    def filter_by_user_relation(self, queryset, field_name, value):
-        """
-        Универсальный метод фильтрации по пользовательским отношениям.
-        """
-        if not value or not self.request.user.is_authenticated:
-            return queryset
-            
-        lookup = f"{field_name}__user"
-        return queryset.filter(**{lookup: self.request.user})
-    
+    def filter_is_favorited(self, queryset, name, value):
+        if value and self.request.user.is_authenticated:
+            return queryset.filter(favorites__user=self.request.user)
+        return queryset
+
+    def filter_is_in_shopping_cart(self, queryset, name, value):
+        if value and self.request.user.is_authenticated:
+            return queryset.filter(shopping_carts__user=self.request.user)
+        return queryset

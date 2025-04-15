@@ -1,39 +1,32 @@
+
 from django.urls import include, path
 from rest_framework import routers
 
-from api import views as api_views
+import api.views as vs
 
-# Роутеры API
-app_name = 'api'
-
-# Роутер для пользователей
 user_router = routers.DefaultRouter()
+recipe_router = routers.DefaultRouter()
+
 user_router.register(
     'users',
-    api_views.UserViewSet,
+    vs.UserViewSet,
     basename='users'
 )
 
-# Роутер для рецептов и ингредиентов
-recipe_router = routers.DefaultRouter()
 recipe_router.register(
     'recipes',
-    api_views.RecipeViewSet,
+    vs.RecipeViewSet,
     basename='recipes'
 )
+
 recipe_router.register(
     'ingredients',
-    api_views.IngredientViewSet,
+    vs.IngredientViewSet,
     basename='ingredients'
 )
 
 urlpatterns = [
-    # Авторизация
-    path('auth/', include('djoser.urls.authtoken')),
-    
-    # API пользователей
     path('', include(user_router.urls)),
-    
-    # API рецептов и ингредиентов
+    path('auth/', include('djoser.urls.authtoken')),
     path('', include(recipe_router.urls)),
 ]
