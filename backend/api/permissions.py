@@ -1,21 +1,21 @@
-from rest_framework.permissions import SAFE_METHODS, BasePermission
+from rest_framework import permissions
 
 
-class IsOwnerOrReadOnly(BasePermission):
+class IsAuthorOrReadOnly(permissions.BasePermission):
     """
-    Доступ только для автора объекта на изменения.
-    Остальные могут только просматривать.
+    Разрешает:
+    - Чтение всем (SAFE_METHODS)
+    - Запись только автору объекта
     """
-    def has_object_permission(self, request, view, obj):
-        return (
-            request.method in SAFE_METHODS
-            or obj.author == request.user
-        )
+    SAFE_METHODS = ('GET', 'HEAD', 'OPTIONS')
 
-
-class IsProfileOwner(BasePermission):
-    """
-    Доступ к профилю только у владельца.
-    """
     def has_permission(self, request, view):
-        return view.kwargs.get('id') == str(request.user.id)
+        """Глобальная проверка доступа."""
+        return True
+
+    def has_object_permission(self, request, view, obj):
+        """Проверка прав для конкретного объекта."""
+        if request.method in self.SAFE_METHODS:
+            return True
+        return obj.author == request.user
+    

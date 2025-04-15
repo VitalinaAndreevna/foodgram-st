@@ -1,22 +1,20 @@
 from rest_framework import serializers
 
 
-class UserRecipeRelationSerializer(serializers.ModelSerializer):
-    """Базовый сериализатор для моделей типа 'избранное' и 'корзина'."""
-
+class BaseUserRecipeSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ('user', 'recipe')
+        fields = ['user', 'recipe']
 
-    def validate(self, attrs):
-        user = attrs.get('user')
-        recipe = attrs.get('recipe')
-
+    def validate(self, data):
+        user = data['user']
+        recipe = data['recipe']
         if self.Meta.model.objects.filter(user=user, recipe=recipe).exists():
             raise serializers.ValidationError(
-                f"Этот рецепт уже добавлен в {self.Meta.model._meta.verbose_name}."
+                f"Рецепт уже в {self.Meta.model._meta.verbose_name}."
             )
-        return attrs
+        return data
 
     def to_representation(self, instance):
-        from api.serializers import ShortRecipeSerializer
+        from api.serializers import ShortRecipeSerializer  # во избежание
+        # циклической зависимости поместил этот импорт сюда
         return ShortRecipeSerializer(instance.recipe).data

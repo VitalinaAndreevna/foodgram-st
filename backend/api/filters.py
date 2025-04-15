@@ -1,34 +1,36 @@
-from django_filters.rest_framework import FilterSet, CharFilter, BooleanFilter, NumberFilter, AllValuesMultipleFilter
+from django_filters import rest_framework as filters
+from django_filters.filters import BooleanFilter
 
-from recipes.models import Recipe, Ingredient
-
-
-class IngredientNameFilter(FilterSet):
-    name = CharFilter(lookup_expr='istartswith')
-
-    class Meta:
-        model = Ingredient
-        fields = ['name']
+from recipes.models import Recipe
 
 
-class RecipeParamsFilter(FilterSet):
-    tags = AllValuesMultipleFilter(field_name='tags__slug')
-    author = NumberFilter(field_name='author__id')
-    is_favorited = BooleanFilter(method='filter_favorites')
-    is_in_shopping_cart = BooleanFilter(method='filter_cart')
+class RecipeFilter(filters.FilterSet):
+    """
+    Фильтр для рецептов с поддержкой:
+    - Избранного
+    - Корзины покупок
+    - Фильтрации по автору
+    """
+    is_favorited = BooleanFilter(
+        method='filter_by_user_relation',
+        field_name='favorites'
+    )
+    is_in_shopping_cart = BooleanFilter(
+        method='filter_by_user_relation',
+        field_name='shopping_carts'
+    )
 
     class Meta:
         model = Recipe
-        fields = ['tags', 'author', 'is_favorited', 'is_in_shopping_cart']
+        fields = ['author']
 
-    def filter_favorites(self, queryset, name, value):
-        user = self.request.user
-        if value and user.is_authenticated:
-            return queryset.filter(favorites__user=user)
-        return queryset
-
-    def filter_cart(self, queryset, name, value):
-        user = self.request.user
-        if value and user.is_authenticated:
-            return queryset.filter(cart__user=user)
-        return queryset
+    def filter_by_user_relation(self, queryset, field_name, value):
+        """
+        Универсальный метод фильтрации по пользовательским отношениям.
+        """
+        if not value or not self.request.user.is_authenticated:
+            return queryset
+            
+        lookup = f"{field_name}__user"
+        return queryset.filter(**{lookup: self.request.user})
+    

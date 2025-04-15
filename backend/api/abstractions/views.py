@@ -5,28 +5,25 @@ from rest_framework.response import Response
 from recipes.models import Recipe
 
 
-def toggle_recipe_relation(request, recipe_id, relation_model, serializer_cls):
-    recipe_instance = get_object_or_404(Recipe, pk=recipe_id)
+def manage_user_recipe(request, pk, model, serializer_class):
+    recipe = get_object_or_404(Recipe, pk=pk)
 
     if request.method == 'POST':
-        payload = {
+        serializer = serializer_class(data={
             'user': request.user.id,
-            'recipe': recipe_instance.id
-        }
-        serializer = serializer_cls(data=payload)
+            'recipe': recipe.id
+        })
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    relation_object = relation_model.objects.filter(
-        user=request.user, recipe=recipe_instance
+    item = model.objects.filter(
+        user=request.user, recipe=recipe
     ).first()
-
-    if relation_object is None:
+    if not item:
         return Response(
-            {"detail": f"Recipe not found in {relation_model._meta.verbose_name}."},
+            {"detail": f"Рецепт не найден в {model._meta.verbose_name}."},
             status=status.HTTP_400_BAD_REQUEST
         )
-
-    relation_object.delete()
+    item.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
