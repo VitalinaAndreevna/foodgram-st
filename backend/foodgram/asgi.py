@@ -1,16 +1,16 @@
 """
-🔌 ASGI entry point for the Foodgram project.
+ASGI config for foodgram project.
 
-This file exposes the ASGI callable as a module-level variable named `application`.
-Used for asynchronous deployment (WebSockets, long polling, etc).
+It exposes the ASGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/4.2/howto/deployment/asgi/
 """
 
 import os
 
 from django.core.asgi import get_asgi_application
 
-# Устанавливаем модуль настроек по умолчанию
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "foodgram.settings")
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'foodgram.settings')
 
-# Получаем ASGI-приложение
 application = get_asgi_application()
