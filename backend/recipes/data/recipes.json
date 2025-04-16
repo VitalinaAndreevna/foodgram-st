@@ -1,564 +1,553 @@
 [
-    {
-      "model": "recipes.recipe",
-      "pk": 1,
-      "fields": {
-        "author": 2,
-        "name": "Спагетти с креветками и чесноком",
-        "image": "recipes/spaghetti_shrimp_garlic.jpeg",
-        "text": "Простое и вкусное блюдо с ароматом чеснока и свежей зеленью.",
-        "cooking_time": 20
-        
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 1,
-      "fields": {
-        "recipe": 1,
-        "ingredient": 189,
-        "amount": 200
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 2,
-      "fields": {
-        "recipe": 1,
-        "ingredient": 727,
-        "amount": 150
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 3,
-      "fields": {
-        "recipe": 1,
-        "ingredient": 680,
-        "amount": 3
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 4,
-      "fields": {
-        "recipe": 1,
-        "ingredient": 423,
-        "amount": 30
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 5,
-      "fields": {
-        "recipe": 1,
-        "ingredient": 436,
-        "amount": 50
-      }
-    },
-    {
-      "model": "recipes.recipe",
-      "pk": 2,
-      "fields": {
-        "author": 2,
-        "name": "Салат с авокадо и креветками",
-        "image": "recipes/avocado_shrimp_salad.jpeg",
-        "text": "Легкий и освежающий салат с авокадо и креветками, заправленный оливковым маслом и лимонным соком.",
-        "cooking_time": 15
-        
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 6,
-      "fields": {
-        "recipe": 2,
-        "ingredient": 7,
-        "amount": 1
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 7,
-      "fields": {
-        "recipe": 2,
-        "ingredient": 727,
-        "amount": 100
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 8,
-      "fields": {
-        "recipe": 2,
-        "ingredient": 435,
-        "amount": 200
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 9,
-      "fields": {
-        "recipe": 2,
-        "ingredient": 423,
-        "amount": 20
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 10,
-      "fields": {
-        "recipe": 2,
-        "ingredient": 340,
-        "amount": 1
-      }
-    },
-    {
-      "model": "recipes.recipe",
-      "pk": 3,
-      "fields": {
-        "author": 3,
-        "name": "Тыквенный суп с имбирем",
-        "image": "recipes/pumpkin_ginger_soup.jpeg",
-        "text": "Ароматный суп с тыквой, имбирем и кокосовым молоком, который согреет в холодный день.",
-        "cooking_time": 30
-        
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 11,
-      "fields": {
-        "recipe": 3,
-        "ingredient": 9,
-        "amount": 500
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 12,
-      "fields": {
-        "recipe": 3,
-        "ingredient": 463,
-        "amount": 20
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 13,
-      "fields": {
-        "recipe": 3,
-        "ingredient": 648,
-        "amount": 400
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 14,
-      "fields": {
-        "recipe": 3,
-        "ingredient": 679,
-        "amount": 1
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 15,
-      "fields": {
-        "recipe": 3,
-        "ingredient": 726,
-        "amount": 5
-      }
-    },
-    {
-      "model": "recipes.recipe",
-      "pk": 4,
-      "fields": {
-        "author": 4,
-        "name": "Пицца с грибами и шпинатом",
-        "image": "recipes/mushroom_spinach_pizza.jpeg",
-        "text": "Вегетарианская пицца с грибами, шпинатом и сыром моцарелла.",
-        "cooking_time": 25
-        
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 16,
-      "fields": {
-        "recipe": 4,
-        "ingredient": 13,
-        "amount": 1
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 17,
-      "fields": {
-        "recipe": 4,
-        "ingredient": 353,
-        "amount": 100
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 18,
-      "fields": {
-        "recipe": 4,
-        "ingredient": 354,
-        "amount": 150
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 19,
-      "fields": {
-        "recipe": 4,
-        "ingredient": 14,
-        "amount": 200
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 20,
-      "fields": {
-        "recipe": 4,
-        "ingredient": 15,
-        "amount": 100
-      }
-    },
-    {
-      "model": "recipes.recipe",
-      "pk": 5,
-      "fields": {
-        "author": 2,
-        "name": "Шоколадный мусс",
-        "image": "recipes/chocolate_mousse.jpeg",
-        "text": "Нежный шоколадный мусс с насыщенным вкусом.",
-        "cooking_time": 20
-        
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 21,
-      "fields": {
-        "recipe": 5,
-        "ingredient": 17,
-        "amount": 200
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 22,
-      "fields": {
-        "recipe": 5,
-        "ingredient": 37,
-        "amount": 300
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 23,
-      "fields": {
-        "recipe": 5,
-        "ingredient": 33,
-        "amount": 2
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 24,
-      "fields": {
-        "recipe": 5,
-        "ingredient": 276,
-        "amount": 100
-      }
-    },
-    {
-      "model": "recipes.recipe",
-      "pk": 6,
-      "fields": {
-        "author": 2,
-        "name": "Греческий салат с курицей",
-        "image": "recipes/greek_chicken_salad.jpeg",
-        "text": "Салат с курицей, помидорами, огурцами, оливками и сыром фета.",
-        "cooking_time": 15
-        
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 25,
-      "fields": {
-        "recipe": 6,
-        "ingredient": 784,
-        "amount": 200
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 26,
-      "fields": {
-        "recipe": 6,
-        "ingredient": 21,
-        "amount": 2
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 27,
-      "fields": {
-        "recipe": 6,
-        "ingredient": 22,
-        "amount": 1
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 28,
-      "fields": {
-        "recipe": 6,
-        "ingredient": 23,
-        "amount": 50
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 29,
-      "fields": {
-        "recipe": 6,
-        "ingredient": 24,
-        "amount": 100
-      }
-    },
-    {
-      "model": "recipes.recipe",
-      "pk": 7,
-      "fields": {
-        "author": 3,
-        "name": "Паста с лососем и сливочным соусом",
-        "image": "recipes/salmon_pasta.jpeg",
-        "text": "Паста с нежным лососем и сливочным соусом, украшенная свежим укропом.",
-        "cooking_time": 30
-        
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 30,
-      "fields": {
-        "recipe": 7,
-        "ingredient": 189,
-        "amount": 300
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 31,
-      "fields": {
-        "recipe": 7,
-        "ingredient": 301,
-        "amount": 200
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 32,
-      "fields": {
-        "recipe": 7,
-        "ingredient": 37,
-        "amount": 200
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 33,
-      "fields": {
-        "recipe": 7,
-        "ingredient": 679,
-        "amount": 1
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 34,
-      "fields": {
-        "recipe": 7,
-        "ingredient": 436,
-        "amount": 50
-      }
-    },
-    {
-      "model": "recipes.recipe",
-      "pk": 8,
-      "fields": {
-        "author": 4,
-        "name": "Курица в медово-горчичном соусе",
-        "image": "recipes/honey_mustard_chicken.jpeg",
-        "text": "Курица в сладком и пикантном медово-горчичном соусе.",
-        "cooking_time": 35
-        
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 35,
-      "fields": {
-        "recipe": 8,
-        "ingredient": 784,
-        "amount": 400
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 36,
-      "fields": {
-        "recipe": 8,
-        "ingredient": 330,
-        "amount": 50
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 37,
-      "fields": {
-        "recipe": 8,
-        "ingredient": 314,
-        "amount": 20
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 38,
-      "fields": {
-        "recipe": 8,
-        "ingredient": 680,
-        "amount": 3
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 39,
-      "fields": {
-        "recipe": 8,
-        "ingredient": 423,
-        "amount": 30
-      }
-    },
-    {
-      "model": "recipes.recipe",
-      "pk": 9,
-      "fields": {
-        "author": 3,
-        "name": "Омлет с шампиньонами",
-        "image": "recipes/mushroom_omelette.jpeg",
-        "text": "Омлет с шампиньонами, луком и свежей зеленью.",
-        "cooking_time": 15
-        
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 40,
-      "fields": {
-        "recipe": 9,
-        "ingredient": 33,
-        "amount": 4
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 41,
-      "fields": {
-        "recipe": 9,
-        "ingredient": 354,
-        "amount": 150
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 42,
-      "fields": {
-        "recipe": 9,
-        "ingredient": 679,
-        "amount": 1
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 43,
-      "fields": {
-        "recipe": 9,
-        "ingredient": 37,
-        "amount": 100
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 44,
-      "fields": {
-        "recipe": 9,
-        "ingredient": 436,
-        "amount": 50
-      }
-    },
-    {
-      "model": "recipes.recipe",
-      "pk": 10,
-      "fields": {
-        "author": 2,
-        "name": "Тирамису",
-        "image": "recipes/tiramisu.jpeg",
-        "text": "Классический итальянский десерт с кофейным вкусом.",
-        "cooking_time": 120
-        
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 45,
-      "fields": {
-        "recipe": 10,
-        "ingredient": 126,
-        "amount": 20
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 46,
-      "fields": {
-        "recipe": 10,
-        "ingredient": 37,
-        "amount": 500
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 47,
-      "fields": {
-        "recipe": 10,
-        "ingredient": 694,
-        "amount": 200
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 48,
-      "fields": {
-        "recipe": 10,
-        "ingredient": 498,
-        "amount": 50
-      }
-    },
-    {
-      "model": "recipes.recipeingredient",
-      "pk": 49,
-      "fields": {
-        "recipe": 10,
-        "ingredient": 276,
-        "amount": 100
-      }
+  {
+    "model": "recipes.recipe",
+    "pk": 1,
+    "fields": {
+      "author": 2,
+      "name": "Куриный суп",
+      "image": "recipes/chiken_soup.jpg",
+      "text": "Вкусный и быстрый рецепт домашнего куриного супа",
+      "cooking_time": 20
     }
-  ]
-  
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 2,
+    "fields": {
+      "author": 2,
+      "name": "Украинский борщ с пампушками",
+      "image": "recipes/ukrain_borsch.jpg",
+      "text": "Невероятно наваристый и сытный борщ по-украински",
+      "cooking_time": 15
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 3,
+    "fields": {
+      "author": 3,
+      "name": "Утка с капустой",
+      "image": "recipes/duck_cabbage.jpg",
+      "text": "Идеальная утка с капустой для вашего стола и любого повода",
+      "cooking_time": 30
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 4,
+    "fields": {
+      "author": 4,
+      "name": "Котлеты в духовке",
+      "image": "recipes/cutlets.jpg",
+      "text": "Говяжьи котлеты из домашнего фарша в духовке с сыром",
+      "cooking_time": 25
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 5,
+    "fields": {
+      "author": 2,
+      "name": "Тарталетки с кальмарами",
+      "image": "recipes/tartlets.jpg",
+      "text": "Теплые тарталетки с кальмарами и зеленью",
+      "cooking_time": 20
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 6,
+    "fields": {
+      "author": 2,
+      "name": "Салат из свёклы с черносливом",
+      "image": "recipes/beetroot_salad.jpg",
+      "text": "Домашний салат из свёклы и чернослива",
+      "cooking_time": 15
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 7,
+    "fields": {
+      "author": 3,
+      "name": "Бисквит с гретскими орехами",
+      "image": "recipes/biscuit.jpg",
+      "text": "Воздушный бисквит с посыпкой из грецких орехов",
+      "cooking_time": 30
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 8,
+    "fields": {
+      "author": 4,
+      "name": "Печенье на сливках",
+      "image": "recipes/cream_cookies.jpg",
+      "text": "Овсяное печенье на нежирных сливках",
+      "cooking_time": 35
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 9,
+    "fields": {
+      "author": 3,
+      "name": "Баклажаны с чесноком",
+      "image": "recipes/eggplant.jpg",
+      "text": "Вкуснейшие баклажаны с чесночным соусом в духовке",
+      "cooking_time": 15
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 10,
+    "fields": {
+      "author": 2,
+      "name": "Мясной пирог",
+      "image": "recipes/meat_pie.jpg",
+      "text": "Быстрый мясной пирог на сковороде",
+      "cooking_time": 120
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 50,
+    "fields": {
+      "recipe": 1,
+      "ingredient": 480,
+      "amount": 314
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 51,
+    "fields": {
+      "recipe": 1,
+      "ingredient": 377,
+      "amount": 481
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 52,
+    "fields": {
+      "recipe": 1,
+      "ingredient": 1350,
+      "amount": 176
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 53,
+    "fields": {
+      "recipe": 1,
+      "ingredient": 106,
+      "amount": 181
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 54,
+    "fields": {
+      "recipe": 1,
+      "ingredient": 1348,
+      "amount": 198
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 55,
+    "fields": {
+      "recipe": 2,
+      "ingredient": 974,
+      "amount": 329
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 56,
+    "fields": {
+      "recipe": 2,
+      "ingredient": 30,
+      "amount": 232
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 57,
+    "fields": {
+      "recipe": 2,
+      "ingredient": 1755,
+      "amount": 315
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 58,
+    "fields": {
+      "recipe": 2,
+      "ingredient": 875,
+      "amount": 69
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 59,
+    "fields": {
+      "recipe": 2,
+      "ingredient": 1108,
+      "amount": 427
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 60,
+    "fields": {
+      "recipe": 3,
+      "ingredient": 1201,
+      "amount": 84
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 61,
+    "fields": {
+      "recipe": 3,
+      "ingredient": 396,
+      "amount": 177
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 62,
+    "fields": {
+      "recipe": 3,
+      "ingredient": 1412,
+      "amount": 353
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 63,
+    "fields": {
+      "recipe": 3,
+      "ingredient": 154,
+      "amount": 97
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 64,
+    "fields": {
+      "recipe": 3,
+      "ingredient": 945,
+      "amount": 396
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 65,
+    "fields": {
+      "recipe": 4,
+      "ingredient": 131,
+      "amount": 232
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 66,
+    "fields": {
+      "recipe": 4,
+      "ingredient": 559,
+      "amount": 291
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 67,
+    "fields": {
+      "recipe": 4,
+      "ingredient": 2135,
+      "amount": 418
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 68,
+    "fields": {
+      "recipe": 4,
+      "ingredient": 942,
+      "amount": 222
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 69,
+    "fields": {
+      "recipe": 4,
+      "ingredient": 1625,
+      "amount": 135
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 70,
+    "fields": {
+      "recipe": 5,
+      "ingredient": 271,
+      "amount": 55
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 71,
+    "fields": {
+      "recipe": 5,
+      "ingredient": 940,
+      "amount": 214
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 72,
+    "fields": {
+      "recipe": 5,
+      "ingredient": 51,
+      "amount": 400
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 73,
+    "fields": {
+      "recipe": 5,
+      "ingredient": 921,
+      "amount": 455
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 74,
+    "fields": {
+      "recipe": 6,
+      "ingredient": 307,
+      "amount": 106
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 75,
+    "fields": {
+      "recipe": 6,
+      "ingredient": 395,
+      "amount": 418
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 76,
+    "fields": {
+      "recipe": 6,
+      "ingredient": 1504,
+      "amount": 43
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 77,
+    "fields": {
+      "recipe": 6,
+      "ingredient": 129,
+      "amount": 245
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 78,
+    "fields": {
+      "recipe": 6,
+      "ingredient": 250,
+      "amount": 18
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 79,
+    "fields": {
+      "recipe": 7,
+      "ingredient": 1752,
+      "amount": 71
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 80,
+    "fields": {
+      "recipe": 7,
+      "ingredient": 2175,
+      "amount": 294
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 81,
+    "fields": {
+      "recipe": 7,
+      "ingredient": 619,
+      "amount": 349
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 82,
+    "fields": {
+      "recipe": 7,
+      "ingredient": 1369,
+      "amount": 450
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 83,
+    "fields": {
+      "recipe": 7,
+      "ingredient": 338,
+      "amount": 390
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 84,
+    "fields": {
+      "recipe": 8,
+      "ingredient": 127,
+      "amount": 221
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 85,
+    "fields": {
+      "recipe": 8,
+      "ingredient": 1839,
+      "amount": 104
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 86,
+    "fields": {
+      "recipe": 8,
+      "ingredient": 422,
+      "amount": 151
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 87,
+    "fields": {
+      "recipe": 8,
+      "ingredient": 1627,
+      "amount": 270
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 88,
+    "fields": {
+      "recipe": 8,
+      "ingredient": 736,
+      "amount": 10
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 89,
+    "fields": {
+      "recipe": 9,
+      "ingredient": 1069,
+      "amount": 388
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 90,
+    "fields": {
+      "recipe": 9,
+      "ingredient": 2060,
+      "amount": 405
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 91,
+    "fields": {
+      "recipe": 9,
+      "ingredient": 1571,
+      "amount": 293
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 92,
+    "fields": {
+      "recipe": 9,
+      "ingredient": 16,
+      "amount": 216
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 93,
+    "fields": {
+      "recipe": 9,
+      "ingredient": 291,
+      "amount": 128
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 94,
+    "fields": {
+      "recipe": 10,
+      "ingredient": 955,
+      "amount": 235
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 95,
+    "fields": {
+      "recipe": 10,
+      "ingredient": 1466,
+      "amount": 136
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 96,
+    "fields": {
+      "recipe": 10,
+      "ingredient": 167,
+      "amount": 228
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 97,
+    "fields": {
+      "recipe": 10,
+      "ingredient": 1330,
+      "amount": 291
+    }
+  },
+  {
+    "model": "recipes.recipeingredient",
+    "pk": 98,
+    "fields": {
+      "recipe": 10,
+      "ingredient": 1898,
+      "amount": 281
+    }
+  }
+]

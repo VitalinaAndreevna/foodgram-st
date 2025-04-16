@@ -10,7 +10,7 @@ services:
       - static_value:/app/static/
       - media_value:/app/media/
     ports:
-      - "8000:8000"  
+      - "8000:8000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -20,6 +20,7 @@ services:
     build: ../frontend
     volumes:
       - ../frontend/:/app/result_build/
+
   nginx:
     container_name: foodgram-proxy
     image: nginx:1.25.4-alpine
@@ -33,6 +34,7 @@ services:
       - media_value:/app/media/    
     depends_on:
       - backend
+
   postgres:
     container_name: foodgram-db
     image: postgres:13
