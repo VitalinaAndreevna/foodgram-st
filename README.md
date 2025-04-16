@@ -42,13 +42,13 @@ docker-compose up -d
 
 ## Список контейнеров:
 
- - foodgram-front
-
- - foodgram-db
-
- - foodgram-backend
-
- - foodgram-proxy
+ - foodgram-front — контейнер с фронтенд-приложением.
+ - 
+ - foodgram-db — контейнер с базой данных.
+ - 
+ - foodgram-backend — контейнер с бизнес-логикой и API.
+ - 
+ - foodgram-proxy — контейнер с обратным прокси-сервером.
 
 
 ## Созданные учётные записи:
