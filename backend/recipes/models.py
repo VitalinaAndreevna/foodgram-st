@@ -6,10 +6,33 @@ from django.utils import timezone
 from foodgram.constants import (MAX_LENGTH_INGREDIENT_MEASUREMENT_UNIT,
                                 MAX_LENGTH_INGREDIENT_NAME, MIN_AMOUNT_VALUE,
                                 MAX_LENGTH_RECIPE_NAME, MIN_COOKING_TIME_VALUE)
-from recipes.abstractions import UserRecipe
 
 User = get_user_model()
 
+class UserRecipe(models.Model):
+    user = models.ForeignKey(
+        User,
+        verbose_name='Пользователь',
+        on_delete=models.CASCADE,
+    )
+    recipe = models.ForeignKey(
+        'Recipe',
+        verbose_name='Рецепт',
+        on_delete=models.CASCADE,
+    )
+
+    class Meta:
+        abstract = True
+        ordering = ['user']
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'recipe'],
+                name='%(class)s_unique',
+            )
+        ]
+
+    def __str__(self):
+        return f'{self.user} добавил {self.recipe}'
 
 class Ingredient(models.Model):
     name = models.CharField(
