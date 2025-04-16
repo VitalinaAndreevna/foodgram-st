@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404
 from djoser.serializers import UserSerializer as DjoserUserSerializer
 from rest_framework.exceptions import ValidationError
 
-from api.abstractions.serializers import BaseUserRecipeSerializer
 from api.fields import Base64ImageField
 from foodgram.constants import MIN_COOKING_TIME_VALUE
 from recipes.models import (Favorite, Ingredient, Recipe, RecipeIngredient,
@@ -13,6 +12,23 @@ from users.models import Follow
 
 User = get_user_model()
 
+class BaseUserRecipeSerializer(slz.ModelSerializer):
+    class Meta:
+        fields = ['user', 'recipe']
+
+    def validate(self, data):
+        user = data['user']
+        recipe = data['recipe']
+        if self.Meta.model.objects.filter(user=user, recipe=recipe).exists():
+            raise slz.ValidationError(
+                f"Рецепт уже в {self.Meta.model._meta.verbose_name}."
+            )
+        return data
+
+    def to_representation(self, instance):
+        from api.serializers import ShortRecipeSerializer  # во избежание
+        # циклической зависимости поместил этот импорт сюда
+        return ShortRecipeSerializer(instance.recipe).data
 
 class UserSerializer(DjoserUserSerializer):
     is_subscribed = slz.SerializerMethodField()

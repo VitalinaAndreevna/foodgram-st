@@ -1,17 +1,13 @@
 import base64
-import csv
 import os
 import uuid
-from io import StringIO
 
 from django.contrib.auth import get_user_model
 from django.core.files.base import ContentFile
 from django.db.models import Sum
 from django.http import HttpResponse
-from django.shortcuts import redirect
 from django_filters.rest_framework import DjangoFilterBackend
 from djoser.views import UserViewSet as DjoserUserViewSet
-from fpdf import FPDF
 from rest_framework import permissions, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
@@ -19,7 +15,6 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
 from api.abstractions.views import manage_user_recipe
-from api.fields import Base62Field
 from api.filters import RecipeFilter
 from api.paginations import Pagination
 from api.permissions import IsAuthorOrReadOnly
@@ -171,34 +166,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
             return RecipeWriteSerializer
         return RecipeReadSerializer
 
-    @action(
-        detail=True,
-        methods=["get"],
-        url_path="get-link",
-        permission_classes=[permissions.AllowAny]
-    )
-    def get_link(self, request, pk=None):
-        recipe = self.get_object()
-
-        short_code = Base62Field.to_base62(recipe.id)
-
-        short_link = request.build_absolute_uri(f"/s/{short_code}")
-
-        return Response({"short-link": short_link}, status=status.HTTP_200_OK)
-
-    def redirect_to_recipe(self, request, short_code=None):
-        try:
-            recipe_id = Base62Field.from_base62(short_code)
-        except ValueError:
-            return Response(
-                {"detail": "Неверный короткий код."},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
-        recipe = get_object_or_404(Recipe, id=recipe_id)
-        redirect_url = request.build_absolute_uri(f"/recipes/{recipe.id}/")
-        return redirect(redirect_url)
-
     @action(detail=False,
             methods=['get'],
             url_path='download_shopping_cart',
@@ -230,81 +197,18 @@ class RecipeViewSet(viewsets.ModelViewSet):
             permission_classes=[permissions.IsAuthenticated])
     def download_shopping_cart(self, request):
         ingredients_list = self.get_ingredients_list_from_cart(request.user)
-
-        file_format = request.query_params.get('format', 'txt').lower()
-
-        format_functions = {
-            'txt': self.generate_txt_file,
-            'csv': self.generate_csv_file,
-            'pdf': self.generate_pdf_file
-        }
-
-        generate_function = format_functions.get(file_format)
-
-        if generate_function:
-            return generate_function(ingredients_list)
-        else:
-            return Response(
-                {"detail": "Выбран неверный формат файла"},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
-    def generate_txt_file(self, ingredients):
+        
         content = "\n".join(
             [
                 f"{ingredient['name']} ({ingredient['measurement_unit']}) — "
                 f"{ingredient['amount']}"
-                  for ingredient in ingredients
+                for ingredient in ingredients_list
             ]
         )
+        
         response = HttpResponse(content, content_type="text/plain")
         response['Content-Disposition'] = (
             'attachment; filename="shopping_cart.txt"'
-        )
-        return response
-
-    def generate_csv_file(self, ingredients):
-        output = StringIO()
-        writer = csv.writer(output)
-        writer.writerow(['Ингредиент', 'Количество',
-                        'Единица измерения'])
-        for ingredient in ingredients:
-            writer.writerow(
-                [
-                    ingredient['name'],
-                    ingredient['amount'],
-                    ingredient['measurement_unit']
-                ]
-            )
-
-        response = HttpResponse(output.getvalue(), content_type="text/csv")
-        response['Content-Disposition'] = (
-            'attachment; filename="shopping_cart.csv"'
-        )
-        return response
-
-    def generate_pdf_file(self, ingredients):
-        pdf = FPDF()
-        pdf.add_page()
-        pdf.set_font("Arial", size=12)
-
-        pdf.cell(200, 10, txt="Список покупок", ln=True, align='C')
-
-        for ingredient in ingredients:
-            pdf.cell(
-                200,
-                10,
-                txt=(
-                    f"{ingredient['name']} "
-                    f"({ingredient['measurement_unit']}) — "
-                    f"{ingredient['amount']}"
-                ),
-                ln=True)
-
-        response = HttpResponse(pdf.output(dest='S').encode(
-            'latin1'), content_type='application/pdf')
-        response['Content-Disposition'] = (
-            'attachment; filename="shopping_cart.pdf"'
         )
         return response
 
